@@ -27,8 +27,10 @@ Route::get('/ping', function (Request $request) {
     return ['pong' => true];
 });
 
+Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');
+
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::post('/auth/login', [AuthController::class, 'logout']);
+Route::post('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/refresh', [AuthController::class, 'refresh']);
 
 Route::post('/user', [AuthController::class, 'create']);
